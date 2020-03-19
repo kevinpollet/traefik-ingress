@@ -3,17 +3,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: traefik-ingress-deployment
-  labels:
-    app: traefik-ingress
+
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: traefik-ingress
+
   template:
     metadata:
       labels:
         app: traefik-ingress
+
     spec:
       serviceAccountName: traefik-ingress-service-account
       containers:
@@ -22,11 +23,14 @@ spec:
           ports:
             - name: http
               containerPort: 80
+
             - name: admin
               containerPort: 8080
+
           volumeMounts:
             - name: static-config
               mountPath: /etc/traefik
+
       volumes:
         - name: static-config
           configMap:
