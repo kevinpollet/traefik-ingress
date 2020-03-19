@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: traefik-api-auth-secret
+data:
+  users: dXNlcjokMnkkMTIkcHJFZDZieWVDY2JXaERCR1VPUHRodTg4OEpQU1c2MnQ4RXY1WGJjYUdtMTlUVzJKZHptLjI=
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-api-auth
+spec:
+  basicAuth:
+    secret: traefik-api-auth-secret
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-dashboard-redirect
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^(.*)/$
+    replacement: ${1}/dashboard/
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-ingress-route
+spec:
+  entryPoints:
+    - traefik
+  routes:
+    - match: Path(`/`)
+      kind: Rule
+      middlewares:
+        - name: traefik-dashboard-redirect
+      services:
+        - name: dashboard@internal
+          kind: TraefikService
+          port: 8080
+
+    - match: PathPrefix(`/api`) || PathPrefix(`/dashboard`)
+      kind: Rule
+      middlewares:
+        - name: traefik-api-auth
+      services:
+        - name: api@internal
+          kind: TraefikService
+          port: 8080

@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traefik-ingress-config
+data:
+  traefik.toml: |
+    [api]
+      dashboard = true
+
+    [entryPoints]
+      [entryPoints.http]
+        address = ":80"
+
+      [entryPoints.traefik]
+        address = ":8080"
+
+    [providers]
+      [providers.kubernetesCRD]
