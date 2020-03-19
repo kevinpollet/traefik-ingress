@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: traefik-api-auth-secret
+  name: admin-auth-secret
 
 data:
   users: dXNlcjokMnkkMTIkcHJFZDZieWVDY2JXaERCR1VPUHRodTg4OEpQU1c2MnQ4RXY1WGJjYUdtMTlUVzJKZHptLjI=
@@ -11,17 +11,17 @@ data:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: traefik-api-auth
+  name: admin-auth
 
 spec:
   basicAuth:
-    secret: traefik-api-auth-secret
+    secret: admin-auth-secret
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: traefik-dashboard-redirect
+  name: admin-dashboard-redirect
 
 spec:
   redirectRegex:
@@ -41,7 +41,7 @@ spec:
     - match: Path(`/`)
       kind: Rule
       middlewares:
-        - name: traefik-dashboard-redirect
+        - name: admin-dashboard-redirect
 
       services:
         - name: dashboard@internal
@@ -51,7 +51,7 @@ spec:
     - match: PathPrefix(`/api`) || PathPrefix(`/dashboard`)
       kind: Rule
       middlewares:
-        - name: traefik-api-auth
+        - name: admin-auth
 
       services:
         - name: api@internal
