@@ -17,3 +17,4 @@ data:
 
     [providers]
       [providers.kubernetesCRD]
+      [providers.kubernetesIngress]
