@@ -17,6 +17,6 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-    - name: traefik
+    - name: admin
       protocol: TCP
       port: 8080

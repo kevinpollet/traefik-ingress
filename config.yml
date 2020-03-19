@@ -12,7 +12,7 @@ data:
       [entryPoints.http]
         address = ":80"
 
-      [entryPoints.traefik]
+      [entryPoints.admin]
         address = ":8080"
 
     [providers]

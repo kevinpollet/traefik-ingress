@@ -33,7 +33,7 @@ metadata:
   name: traefik-ingress-route
 spec:
   entryPoints:
-    - traefik
+    - admin
   routes:
     - match: Path(`/`)
       kind: Rule
