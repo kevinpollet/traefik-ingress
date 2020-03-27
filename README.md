@@ -3,6 +3,14 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![License](https://img.shields.io/github/license/kevinpollet/traefik-ingress)](./LICENSE.md)
 
+## Usage
+
+```shell
+git clone git@github.com:kevinpollet/traefik-ingress.git
+
+kubectl apply -f traefik-ingress/
+```
+
 ## Contributing
 
 Contributions are welcome!
