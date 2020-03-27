@@ -5,7 +5,7 @@ metadata:
   name: admin-auth-secret
 
 data:
-  users: dXNlcjokMnkkMTIkcHJFZDZieWVDY2JXaERCR1VPUHRodTg4OEpQU1c2MnQ4RXY1WGJjYUdtMTlUVzJKZHptLjI=
+  users: YWRtaW46JDJ5JDEwJERNeU15eDkxLjk1M0dLdXJiRFpldXU4WlBpb2QyNnhnZVdYVXl6WUcuLzl1VlNmZy5YUmhp
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
