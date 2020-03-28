@@ -1,5 +1,6 @@
 # traefik-ingress
 
+[![Build Status](https://github.com/kevinpollet/traefik-ingress/workflows/build/badge.svg)](https://github.com/kevinpollet/traefik-ingress/actions)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![License](https://img.shields.io/github/license/kevinpollet/traefik-ingress)](./LICENSE.md)
 
