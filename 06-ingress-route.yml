@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: admin-auth-secret
+  namespace: traefik-ingress
 
 data:
   users: YWRtaW46JDJ5JDEwJERNeU15eDkxLjk1M0dLdXJiRFpldXU4WlBpb2QyNnhnZVdYVXl6WUcuLzl1VlNmZy5YUmhp
@@ -12,6 +13,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: admin-auth
+  namespace: traefik-ingress
 
 spec:
   basicAuth:
@@ -22,6 +24,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: admin-dashboard-redirect
+  namespace: traefik-ingress
 
 spec:
   redirectRegex:
@@ -34,6 +37,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: traefik-ingress-route
+  namespace: traefik-ingress
 
 spec:
   entryPoints: ["admin"]

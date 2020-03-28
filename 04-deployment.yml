@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: traefik-ingress-deployment
+  namespace: traefik-ingress
 
 spec:
   replicas: 1

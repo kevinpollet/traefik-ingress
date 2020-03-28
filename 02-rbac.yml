@@ -3,6 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
 metadata:
   name: traefik-ingress-cluster-role
+  namespace: traefik-ingress
 
 rules:
   - apiGroups:
@@ -48,10 +49,11 @@ rules:
       - watch
 
 ---
-kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
 metadata:
   name: traefik-ingress-cluster-role-binding
+  namespace: traefik-ingress
 
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -60,5 +62,5 @@ roleRef:
 
 subjects:
   - name: traefik-ingress-service-account
-    namespace: default
     kind: ServiceAccount
+    namespace: traefik-ingress

@@ -3,12 +3,14 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: traefik-ingress-service-account
+  namespace: traefik-ingress
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: traefik-ingress-service
+  namespace: traefik-ingress
 
 spec:
   type: LoadBalancer

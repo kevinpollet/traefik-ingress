@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: traefik-ingress-config
+  namespace: traefik-ingress
 
 data:
   traefik.toml: |
